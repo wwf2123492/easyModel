@@ -83,8 +83,3 @@ NSARRAY_TYPE(subTypeClass)
 
 @end
 
-
-@interface testType:easyModel
-@property(strong, nonatomic) NSNumber *number;
-@end
-
