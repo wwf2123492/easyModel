@@ -215,6 +215,10 @@
         NSNumber* number = [self getNumberElementForKey:name dic:dic];
         [self setValue:number forKey:name];
     }
+    else if([type isEqualToString:@"B"]){
+        NSNumber* number = [self getNumberElementForKey:name dic:dic];
+        [self setValue:number forKey:name];
+    }
     else if ([type isEqualToString:@"@\"NSString\""]) {
         [self setValue: [self getStringElementForKey:name dic:dic]
                 forKey:name];

@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "People.h"
+#import "TestType.h"
 
 
 @interface AppDelegate ()
@@ -23,6 +23,7 @@
   //  jmodel* jm = [[jmodel alloc] initWithDictionary:@{@"i":@(3)} error:nil];
     
     NSDictionary *testDic = @{@"name":@"wwf",
+                              @"b":@(YES),
                               @"i":@"-4",
                               @"ui":@"4",
                               @"ni":@"-5",

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 horace. All rights reserved.
 //
 
-#import "People.h"
+#import "TestType.h"
 @implementation subTypeClass
 
 @end

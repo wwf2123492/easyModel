@@ -14,7 +14,7 @@
 		F406461C1D95113D00CE5624 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F406461B1D95113D00CE5624 /* Assets.xcassets */; };
 		F406461F1D95113D00CE5624 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F406461D1D95113D00CE5624 /* LaunchScreen.storyboard */; };
 		F40646281D9511C000CE5624 /* easyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F40646271D9511C000CE5624 /* easyModel.m */; };
-		F406462B1D9514EB00CE5624 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = F406462A1D9514EB00CE5624 /* People.m */; };
+		F406462B1D9514EB00CE5624 /* TestType.m in Sources */ = {isa = PBXBuildFile; fileRef = F406462A1D9514EB00CE5624 /* TestType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		F40646201D95113D00CE5624 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F40646261D9511C000CE5624 /* easyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easyModel.h; sourceTree = "<group>"; };
 		F40646271D9511C000CE5624 /* easyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = easyModel.m; sourceTree = "<group>"; };
-		F40646291D9514EB00CE5624 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
-		F406462A1D9514EB00CE5624 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
+		F40646291D9514EB00CE5624 /* TestType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestType.h; sourceTree = "<group>"; };
+		F406462A1D9514EB00CE5624 /* TestType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,8 @@
 				F406461D1D95113D00CE5624 /* LaunchScreen.storyboard */,
 				F40646201D95113D00CE5624 /* Info.plist */,
 				F406460F1D95113D00CE5624 /* Supporting Files */,
-				F40646291D9514EB00CE5624 /* People.h */,
-				F406462A1D9514EB00CE5624 /* People.m */,
+				F40646291D9514EB00CE5624 /* TestType.h */,
+				F406462A1D9514EB00CE5624 /* TestType.m */,
 			);
 			path = easyModel;
 			sourceTree = "<group>";
@@ -161,7 +161,7 @@
 			files = (
 				F40646171D95113D00CE5624 /* ViewController.m in Sources */,
 				F40646281D9511C000CE5624 /* easyModel.m in Sources */,
-				F406462B1D9514EB00CE5624 /* People.m in Sources */,
+				F406462B1D9514EB00CE5624 /* TestType.m in Sources */,
 				F40646141D95113D00CE5624 /* AppDelegate.m in Sources */,
 				F40646111D95113D00CE5624 /* main.m in Sources */,
 			);

@@ -19,7 +19,7 @@
 
 
 @interface testType:easyModel
-
+@property(assign, nonatomic) BOOL b;
 @property(assign, nonatomic) int i;
 @property(assign, nonatomic) unsigned int ui;
 @property(assign, nonatomic) NSInteger ni;
