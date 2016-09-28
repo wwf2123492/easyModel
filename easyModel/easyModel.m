@@ -98,41 +98,6 @@
 
 }
 
-- (bool)parseObjcProperty:(objc_property_t*)property {
-    unsigned int count;
-    objc_property_attribute_t *attrs = property_copyAttributeList(*property, &count);
-    
-    bool isReadOnly = false;
-    for (size_t i = 0; i < count; ++i) {
-        switch (*attrs[i].name) {
-            case 'T':
-                NSLog(@"type:%@",@(attrs[i].value));
-                
-                break;
-            case 'R':
-                isReadOnly = true;
-                break;
-            case 'N':
-                // nonatomic
-                break;
-            case 'D':
-                // dynamic
-                break;
-            case 'G':
-                //_getterName = @(attrs[i].value);
-                break;
-            case 'S':
-                //_setterName = @(attrs[i].value);
-                break;
-            default:
-                break;
-        }
-    }
-    free(attrs);
-    
-    return isReadOnly;
-}
-
 
 -(instancetype)initWithDic:(NSDictionary*)dic{
     self = [super init];
@@ -281,23 +246,6 @@
         [self setValue:addDataArr
                 forKey:name];
     }
-    else  if ([type isEqualToString:@"@\"NSMutableDictionary\""]) {
-        NSString * trueType = [type substringFromIndex:2];
-        trueType  = [trueType substringToIndex:[trueType length]-1];
-        Class cls = NSClassFromString(trueType);
-        NSDictionary * dataDic = [self getDicElementForKey:name dic:dic];
-        easyModel* model = [[cls alloc] initWithDic:dataDic];
-        [self setValue:model forKey:name];
-    }
-    else  if ([type isEqualToString:@"@\"NSDictionary\""]) {
-        NSString * trueType = [type substringFromIndex:2];
-        trueType  = [trueType substringToIndex:[trueType length]-1];
-        Class cls = NSClassFromString(trueType);
-        NSDictionary * dataDic = [self getDicElementForKey:name dic:dic];
-        easyModel* model = [[cls alloc] initWithDic:dataDic];
-        [self setValue:model forKey:name];
-    }
-    
     else {
         NSString* typeName = [type substringFromIndex:2];
         typeName = [typeName substringToIndex:[typeName length] -1];
@@ -311,6 +259,7 @@
         }
     }
 }
+
 +(instancetype)modelWithDic:(NSDictionary*)dic{
     Class cls = [self class];
     
