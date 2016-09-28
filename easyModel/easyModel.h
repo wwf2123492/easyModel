@@ -15,10 +15,7 @@
 +(instancetype)modelWithDic:(NSDictionary*)dic;
 +(instancetype)modelWithJson:(NSString*)jsonStr;
 @end
-
-#define EModelDef(__ModelName__) \
-@protocol __ModelName__; \
-@interface People : easyModel
+#define NSARRAY_TYPE(__ModelName__) @protocol __ModelName__;
 
 @protocol NSString;
 @protocol NSNumber;

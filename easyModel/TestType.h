@@ -14,8 +14,8 @@
 @property (nonatomic,assign)  int  subi;
 
 @end
+NSARRAY_TYPE(subTypeClass)
 
-@protocol subTypeClass;
 
 
 @interface testType:easyModel
