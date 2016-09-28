@@ -1,6 +1,5 @@
 //
 //  easyModel.h
-//  JdMomBaby
 //
 //  Created by cdyjy-cdwutao3 on 16/7/7.
 //  Copyright © 2016年 jd. All rights reserved.
@@ -16,9 +15,6 @@
 -(instancetype)initWithJson:(NSString*)jsonStr;
 +(instancetype)modelWithDic:(NSDictionary*)dic;
 +(instancetype)modelWithJson:(NSString*)jsonStr;
-
-
-
 
 #pragma mark -
 #pragma -mark ==== suport fuc ====
