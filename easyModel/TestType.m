@@ -15,3 +15,6 @@
 @implementation testType
 
 @end
+
+@implementation subTestType
+@end

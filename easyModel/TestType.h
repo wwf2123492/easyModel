@@ -19,6 +19,7 @@ NSARRAY_TYPE(subTypeClass)
 
 
 @interface testType:easyModel
+@property(copy, nonatomic)  dispatch_block_t block;
 @property(assign, nonatomic) BOOL b;
 @property(assign, nonatomic) int i;
 @property(assign, nonatomic) unsigned int ui;
@@ -34,6 +35,9 @@ NSARRAY_TYPE(subTypeClass)
 @property(strong, nonatomic) NSArray<NSString> *subStrings;
 @property(strong, nonatomic)  NSArray<subTypeClass> *subTypes;
 @property(strong, nonatomic)  NSMutableArray<subTypeClass> *msubTypes;
+
 @end
 
-
+@interface subTestType: testType
+@property (copy, nonatomic) NSString* subNameString;
+@end

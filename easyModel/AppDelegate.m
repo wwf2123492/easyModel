@@ -33,11 +33,12 @@
                               @"string":@"stringTest",
                               @"subStrings":@[@"wwf1",@"wwf2"],
                               @"subTypes":@[@{@"subTypeName":@"subname",
-                                              @"subi":@(5555)}]
+                                              @"subi":@(5555)}],
+                              @"subNameString":@"sub_name_string",
                               
                               
                               };
-    testType*  p = [testType modelWithDic:testDic];
+    subTestType*  p = [subTestType modelWithDic:testDic];
   
     subTypeClass* obj = p.subTypes.firstObject;
     NSLog(@"subName:%@  subi:%@",obj.subTypeName,@(obj.subi));

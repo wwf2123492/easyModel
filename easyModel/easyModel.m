@@ -101,69 +101,66 @@
 -(instancetype)initWithDic:(NSDictionary*)dic{
     self = [super init];
     if(self){
-        unsigned int properListCount;
-        objc_property_t *props = class_copyPropertyList([self class], &properListCount);
-        NSLog(@"count:%@",@(properListCount));
-        for (unsigned int i = 0; i < properListCount; i++) {
-            unsigned int properCount;
-            objc_property_t pro = props[i];
-
-            objc_property_attribute_t *attrs = property_copyAttributeList(pro, &properCount);
-            
-            NSString* propertyType;
-            NSString *propertyName = @(property_getName(props[i]));
-            for (size_t t = 0; t < properCount; ++t) {
-                switch (*attrs[t].name) {
-                    case 'T':
-                        propertyType = @(attrs[t].value);
-                        break;
-                    case 'R':
-                        
-                    //    NSLog(@"type:%@",@(attrs[t].value));
-                        break;
-                    case 'N':
-                        // nonatomic
-                     //   NSLog(@"type:%@",@(attrs[t].value));
-                        break;
-                    case 'D':
-                        // dynamic
-                      //  NSLog(@"type:%@",@(attrs[t].value));
-                        break;
-                    case 'G':
-                        //_getterName = @(attrs[i].value);
-                     //   NSLog(@"type:%@",@(attrs[t].value));
-                        break;
-                    case 'S':
-                        //_setterName = @(attrs[i].value);
-                     //   NSLog(@"type:%@",@(attrs[t].value));
-                        break;
-                    default:
-                        break;
-                }
-            }
-            free(attrs);
-            [self dealProprety:propertyName type:propertyType dic:dic];
-        }
-        
-//        Ivar *ivars = class_copyIvarList([self class], &count);
-//        
-//        for (int i = 0; i<count; i++) {
-//            
-//            Ivar ivar = ivars[i];
-//            const char *var_name = ivar_getName(ivar);
-//            const char * var_type   = ivar_getTypeEncoding(ivar);
-//            NSString *name = [NSString stringWithUTF8String:var_name+1];
-//            NSString *type = [NSString stringWithUTF8String:var_type];
-//            
-//        }
-//        free(ivars);
+        [self dealPropertyWithClass:[self class] dic:dic];
     }
     return self;
 }
 
+- (void)dealPropertyWithClass:(Class)cls dic:(NSDictionary*)dic{
+    unsigned int properListCount;
+    if(cls != [easyModel class]){
+        [self dealPropertyWithClass:[cls superclass] dic:dic];
+    }
+    
+    objc_property_t *props = class_copyPropertyList(cls, &properListCount);
+    NSLog(@"count:%@",@(properListCount));
+    for (unsigned int i = 0; i < properListCount; i++) {
+        unsigned int properCount;
+        objc_property_t pro = props[i];
+        
+        objc_property_attribute_t *attrs = property_copyAttributeList(pro, &properCount);
+        
+        NSString* propertyType;
+        NSString *propertyName = @(property_getName(props[i]));
+        for (size_t t = 0; t < properCount; ++t) {
+            switch (*attrs[t].name) {
+                case 'T':
+                    propertyType = @(attrs[t].value);
+                    break;
+                case 'R':
+                    
+                    //    NSLog(@"type:%@",@(attrs[t].value));
+                    break;
+                case 'N':
+                    // nonatomic
+                    //   NSLog(@"type:%@",@(attrs[t].value));
+                    break;
+                case 'D':
+                    // dynamic
+                    //  NSLog(@"type:%@",@(attrs[t].value));
+                    break;
+                case 'G':
+                    //_getterName = @(attrs[i].value);
+                    //   NSLog(@"type:%@",@(attrs[t].value));
+                    break;
+                case 'S':
+                    //_setterName = @(attrs[i].value);
+                    //   NSLog(@"type:%@",@(attrs[t].value));
+                    break;
+                default:
+                    break;
+            }
+        }
+        free(attrs);
+        [self dealProprety:propertyName type:propertyType dic:dic];
+    }
+}
 - (void)dealProprety:(NSString*)name
                 type:(NSString*)type
                  dic:(NSDictionary*)dic{
+    if([type isEqualToString:@"@?"]){
+        return;
+    }
     if ([type isEqualToString:@"@\"NSNumber\""]) {
         [self setValue: [self getNumberElementForKey:name dic:dic]
                 forKey:name];

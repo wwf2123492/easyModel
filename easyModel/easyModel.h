@@ -19,10 +19,10 @@
 #pragma mark -
 #pragma -mark ==== suport fuc ====
 #pragma mark -
--(id)getObjectForKey:(id)key witClass:(Class)forClass  dic:(NSDictionary*)dic;
--(NSString *)getStringElementForKey:(id)key dic:(NSDictionary*)dic;
--(NSDictionary*)getDicElementForKey:(id)key dic:(NSDictionary*)dic;
-- (NSArray*)getArrayElementForKey:(id)key dic:(NSDictionary*)dic;
+- (id) getObjectForKey:(id)key witClass:(Class)forClass  dic:(NSDictionary*)dic;
+- (NSString *) getStringElementForKey:(id)key dic:(NSDictionary*)dic;
+- (NSDictionary *) getDicElementForKey:(id)key dic:(NSDictionary*)dic;
+- (NSArray *) getArrayElementForKey:(id)key dic:(NSDictionary*)dic;
 - (NSNumber *)getNumberElementForKey:(id)key dic:(NSDictionary*)dic;
 @end
 
