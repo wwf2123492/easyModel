@@ -20,8 +20,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-  //  jmodel* jm = [[jmodel alloc] initWithDictionary:@{@"i":@(3)} error:nil];
-    
     NSDictionary *testDic = @{@"name":@"wwf",
                               @"b":@(YES),
                               @"i":@"-4",
@@ -35,8 +33,6 @@
                               @"subTypes":@[@{@"subTypeName":@"subname",
                                               @"subi":@(5555)}],
                               @"subNameString":@"sub_name_string",
-                              
-                              
                               };
     subTestType*  p = [subTestType modelWithDic:testDic];
   

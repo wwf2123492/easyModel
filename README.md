@@ -1,70 +1,43 @@
-easyModel
+## easyModel
 
-一个简单的将JSON或者NSDictionary对象转换成自定义对象的组件
-可以定义如下对象：
-#import "easyModel.h"
+###简介
+easyModel允许你通过JSON来构造数据对象,它会自动根据model中定义的property的名称来获取JSON字串中对应的key的值，简化了从JSON到数据构造的过程:
+  
+ 	-(instancetype)initWithDic:(NSDictionary*)dic;
+	-(instancetype)initWithJson:(NSString*)jsonStr;
+	+(instancetype)modelWithDic:(NSDictionary*)dic;  
+	+(instancetype)modelWithJson:(NSString*)jsonStr;
+  
 
-@interface subTypeClass  : easyModel
+###例子
+我们一个 testType 继承于 easyModel 包含 常见的基础类型和列表其他easyModel对象，列表，常见于网络返回数据：
 
-@property (nonatomic,copy) NSString* subTypeName;
+	@interface testType:easyModel
+	
+	@property(copy, nonatomic)  dispatch_block_t block;
+	@property(assign, nonatomic) BOOL b;
+	@property(assign, nonatomic) int i;
+	@property(assign, nonatomic) unsigned int ui;
+	@property(assign, nonatomic) NSInteger ni;
+	@property(assign, nonatomic) NSUInteger uni;
+	@property(assign, nonatomic) long l;
+	@property(assign, nonatomic) long long ll;
+	@property(assign, nonatomic) float f;
+	@property(assign, nonatomic) double d;
+	@property(copy, nonatomic) NSString *string;
+	@property(copy, nonatomic) NSMutableString *mstring;
+	@property(strong, nonatomic) NSNumber *number;
+	@property(strong, nonatomic) NSArray<NSString> *subStrings;
+	@property(strong, nonatomic)  NSArray<subTypeClass> *subTypes;
+	@property(strong, nonatomic)  NSMutableArray<subTypeClass> *msubTypes;
+	
+	@end
+	
+###自定义字段解析
+如果自己定义个一个model有个字段叫`otherName` 对应网络JSON返回的key为`jsonName`             ，只需要重载`initWithDic`方法即可:
 
-@property (nonatomic,assign)  int  subi;
-
-@end
-
-NSARRAY_TYPE(subTypeClass)
-
-
-
-@interface testType:easyModel
-
-@property(assign, nonatomic) BOOL b;
-
-@property(assign, nonatomic) int i;
-
-@property(assign, nonatomic) unsigned int ui;
-
-@property(assign, nonatomic) NSInteger ni;
-
-@property(assign, nonatomic) NSUInteger uni;
-
-@property(assign, nonatomic) long l;
-
-@property(assign, nonatomic) long long ll;
-
-@property(assign, nonatomic) float f;
-
-@property(assign, nonatomic) double d;
-
-@property(copy, nonatomic) NSString *string;
-
-@property(copy, nonatomic) NSMutableString *mstring;
-
-@property(strong, nonatomic) NSNumber *number;
-
-@property(strong, nonatomic) NSArray<NSString> *subStrings;
-
-@property(strong, nonatomic)  NSArray<subTypeClass> *subTypes;
-
-@property(strong, nonatomic)  NSMutableArray<subTypeClass> *msubTypes;
-
-@end
-
-功能
-1:支持int，NSInteger，BOOL，float等基础类型
-
-2:支持NSArray模板定义对象
-
-    比如   NSArray<NSString> * strings
-
-           NSArray<modelType>  models
-
-3:不支持 NSDate，NSData，我们的数据基本都是从网络取回来的json，不用支持如此复杂的数据类型，如果有需要自己添加也方便
-
-4:没有做自己定义map，如果有需要，可以添做如下操作
-
-比如对应的 otherName  需要对应到 网络返回的jsonName:
-
+ 
+```
 @implement testType
 
 -(instancetype)initWithDic:(NSDictionary*)dic{
@@ -76,10 +49,11 @@ NSARRAY_TYPE(subTypeClass)
      self.otherName = [self getStringElementForKey:@"jsonName" dic:dic];
 
   }
-
   return self;
-
 }
-
 @end
 
+```
+
+###字段解析说明
+现在easyModel还不支持`NSData`和`NSDate`，因为网络JSON字串不能返回data，返回的date或者是时间戳，或者是字符串，这个根据不同的项目定义都不一样，所以可以根据具体的项目使用`自定义字段解析`的方法来实现。
